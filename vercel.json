@@ -1,0 +1,19 @@
+{
+    "projects": [
+      {
+        "name": "client",
+        "directory": "client",
+        "installCommand": "npm install",
+        "buildCommand": "npm run build",
+        "outputDirectory": "build"
+      },
+      {
+        "name": "server",
+        "directory": "server",
+        "installCommand": "npm install",
+        "buildCommand": "npm run build",
+        "startCommand": "node index.js"
+      }
+    ]
+  }
+  
