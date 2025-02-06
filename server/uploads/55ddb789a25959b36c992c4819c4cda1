@@ -1,0 +1,94 @@
+import pandas as pd
+from scipy.stats import zscore
+import openai
+import matplotlib
+matplotlib.use('Agg')  # Use a non-interactive backend
+import matplotlib.pyplot as plt
+from PIL import Image, ImageTk
+
+
+# Sample click data (Normally this would come from your advertising platform)
+data = {
+    'click_id': [1, 2, 3, 4, 5, 6, 7, 8],
+    'user_ip': ['192.168.1.1', '192.168.1.2', '192.168.1.3', '192.168.1.4', '192.168.1.1', '192.168.1.5', '192.168.1.2',
+                '192.168.1.1'],
+    'geography': ['US', 'US', 'US', 'US', 'India', 'US', 'US', 'India'],
+    'click_timestamp': ['2025-01-23 08:10:01', '2025-01-23 08:11:00', '2025-01-23 08:12:00', '2025-01-23 08:13:00',
+                        '2025-01-23 08:14:00', '2025-01-23 08:15:00', '2025-01-23 08:16:00', '2025-01-23 08:17:00'],
+    'clicks': [1, 1, 1, 1, 1, 1, 1, 1]
+}
+
+df = pd.DataFrame(data)
+df['click_timestamp'] = pd.to_datetime(df['click_timestamp'])
+## Anomaly Detection
+##To detect unusual click patterns, we can use machine learning algorithms for anomaly detection. A simple approach is to use Z-Score for identifying spikes or anomalies in clicks based on historical behavior.
+
+# Calculate z-scores for clicks (a common method to detect anomalies)
+df['click_zscore'] = zscore(df['clicks'])
+print(df)
+# Detect anomalies (if z-score is > 3, it's an anomaly)
+df['is_anomaly'] = df['click_zscore'].apply(lambda x: 1 if abs(x) > 2 else 0)
+# View flagged anomalies
+print(df[df['is_anomaly'] == 1])
+
+## Integrating OpenAI for Recommendations
+# Set up OpenAI API Key
+#openai.api_key = "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"
+openai.api_key = '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'
+
+# Function to generate recommendation based on detected anomaly
+def get_recommendation(fraud_info):
+    prompt = f"""
+    A campaign has detected fraudulent behavior with an unusually high number of clicks in a specific region.
+    Here are the details:
+    {fraud_info}
+    Please provide recommendations to mitigate the fraudulent activity.
+    """
+
+    # Use chat-based API with messages
+    response = openai.ChatCompletion.create(
+
+
+        model="gpt-4o",  # Or gpt-3.5-turbo
+        #embedding_model = "text-embedding-3-small",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=100,
+        temperature=0.7
+    )
+
+    return response['choices'][0]['message']['content'].strip()
+
+
+# Example fraud info (detected anomaly details)
+fraud_info = {
+    'campaign_name': 'Retail Campaign',
+    'detected_anomaly': '3 clicks from India in a single session, which is unusual',
+    'current_action': 'Clicks from India are unusually high',
+}
+
+# Get GenAI recommendation
+recommendation = get_recommendation(fraud_info)
+print(recommendation)
+
+## Automate Actions Based on Recommendations
+## Now that we have fraud detection and recommendations in place, you can implement automated actions based on the recommendation. This could involve rerouting ads, pausing campaigns, or adjusting targeting parameters.
+# Example: Automatically pause campaign based on recommendation
+if "pause" in recommendation.lower():
+    print("Action: Pausing campaign in the flagged region.")
+    # Code to pause the ad campaign (this would be an API call to the ad platform)
+else:
+    print("Action: Monitoring and adjusting bids.")
+##Monitoring and Reporting
+#After implementing the detection and mitigation system, it's essential to continuously monitor campaign performance and report on fraudulent activity.
+# Visualize clicks and anomalies
+# plt.figure(figsize=(10, 6))
+# plt.plot(df['click_timestamp'], df['clicks'], label='Clicks')
+# plt.scatter(df[df['is_anomaly'] == 1]['click_timestamp'], df[df['is_anomaly'] == 1]['clicks'], color='red', label='Anomalies')
+# plt.title("Click Fraud Detection")
+# plt.xlabel("Timestamp")
+# plt.ylabel("Number of Clicks")
+# plt.legend()
+# plt.savefig("click_fraud_detection.png")  # Save the plot as a PNG file instead of showing it

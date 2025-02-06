@@ -1,0 +1,344 @@
+/* Default Light Mode */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  color: #333;
+}
+
+.sidebar label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.sidebar select,
+.sidebar input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.sidebar button:hover {
+  background-color: #005ea6;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button-group {
+  margin-top: 15px;
+}
+
+.button-group button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.button-group .danger {
+  background-color: #d9534f;
+  color: white;
+}
+
+.button-group button:hover {
+  background-color: #bbb;
+}
+
+.switch-container {
+  margin-top: 15px;
+}
+
+.switch-container input {
+  margin-right: 5px;
+}
+
+.tabs {
+  margin-top: 20px;
+}
+
+.tabs button {
+  padding: 10px 15px;
+  margin-right: 5px;
+  border: none;
+  background: #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tabs .active {
+  background: #0078d4;
+  color: white;
+}
+
+.tab-content {
+  margin-top: 10px;
+}
+
+/* 🔥 Dark Mode Styles */
+.container.dark {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Sidebar */
+.container.dark .sidebar {
+  background-color: #252526;
+}
+
+.container.dark .sidebar h2 {
+  color: #ffffff;
+}
+
+.container.dark .sidebar label {
+  color: #c7c7c7;
+}
+
+.container.dark .sidebar select,
+.container.dark .sidebar input {
+  background: #3c3c3c;
+  color: white;
+  border: 1px solid #555;
+}
+
+.container.dark .sidebar button {
+  background-color: #0078d4;
+}
+
+.container.dark .sidebar button:hover {
+  background-color: #005ea6;
+}
+
+/* Main Content */
+.container.dark .main-content {
+  background-color: #1e1e1e;
+}
+
+.container.dark .card {
+  background: #252526;
+  color: white;
+}
+
+.container.dark .button-group button {
+  background-color: #3c3c3c;
+  color: white;
+}
+
+.container.dark .button-group .danger {
+  background-color: #d9534f;
+}
+
+.container.dark .tabs button {
+  background: #3c3c3c;
+  color: white;
+}
+
+.container.dark .tabs .active {
+  background: #0078d4;
+}
+
+/* Dark Mode Toggle Button */
+.toggle-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px;
+  cursor: pointer;
+  background: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.toggle-btn:hover {
+  background: #005ea6;
+}
+
+
+.response {
+  background-color: #f9f9f9;
+  /* Light background color */
+  border: 1px solid #ddd;
+  /* Light border */
+  border-radius: 8px;
+  /* Rounded corners */
+  padding: 16px;
+  /* Some padding */
+  margin-top: 20px;
+  /* Space from the top */
+  width: 90%;
+  /* Wider container */
+  margin-left: auto;
+  /* Center align */
+  margin-right: auto;
+  /* Center align */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add a subtle shadow */
+  text-align: left;
+  /* Left align text */
+}
+
+.response h3 {
+  margin-top: 0;
+  /* No margin at the top of headings */
+  color: #333;
+  /* Dark text color */
+}
+
+.script-output,
+.script-error {
+  background-color: #eaeaea;
+  /* Light gray background for preformatted text */
+  padding: 10px;
+  /* Padding inside preformatted text */
+  border-radius: 5px;
+  /* Rounded corners for preformatted text */
+  overflow-x: auto;
+  /* Horizontal scrollbar for long text */
+  font-family: monospace;
+  /* Monospace font for code */
+  white-space: pre-wrap;
+  /* Wrap long lines */
+}
+
+.script-output {
+  color: #09081b;
+  font-weight: 500;
+  font-size: 117%;
+  
+  /* Green text color for output */
+}
+
+.script-error {
+  color: #F44336;
+  /* Red text color for errors */
+}
+
+.bold-text {
+  font-weight: bold;
+  /* color: blue; */
+  font-weight: 900;
+}
+
+.ai {
+  font-weight: bold;
+  /* color: blue; */
+  font-weight: 900;
+  color: blue;
+}
+
+.light-text {
+  font-weight: 100;
+}
+
+.follow-up-prompt {
+  margin-top: 20px;
+}
+
+.follow-up-prompt label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.follow-up-prompt input {
+  width: 60%;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.follow-up-prompt button {
+  padding: 8px 16px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.follow-up-prompt button:hover {
+  background-color: #005ea6;
+}
+
+.company-logo {
+
+  width: 150px;
+  height: 116px;
+}
+
+.info-icon {
+  display: inline-block;
+  margin-left: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.info-icon::after {
+  content: attr(data-tooltip);
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position the tooltip above the icon */
+  left: 50%;
+  margin-left: -100px; /* Use half of the tooltip width to center it */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.info-icon:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
