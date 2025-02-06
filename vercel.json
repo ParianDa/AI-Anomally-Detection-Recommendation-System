@@ -1,19 +1,18 @@
 {
-    "smart anomally ai detection": [
+    "builds": [
       {
-        "name": "client",
-        "directory": "client",
-        "installCommand": "npm install",
-        "buildCommand": "npm run build",
-        "outputDirectory": "build"
+        "src": "client/package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "build" }
       },
       {
-        "name": "server",
-        "directory": "server",
-        "installCommand": "npm install",
-        "buildCommand": "npm run build",
-        "startCommand": "node index.js"
+        "src": "server/server.js",
+        "use": "@vercel/node"
       }
+    ],
+    "routes": [
+      { "src": "/api/(.*)", "dest": "/server/server.js" },
+      { "src": "/(.*)", "dest": "/client/$1" }
     ]
   }
   
