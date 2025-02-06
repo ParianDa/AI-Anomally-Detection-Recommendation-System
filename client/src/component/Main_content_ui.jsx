@@ -192,17 +192,6 @@ const MainContentUI = () => {
                             </div>
                         ))
                     )}
-                    {responses.length > 0 && (
-                        <div className="follow-up-prompt">
-                            <input
-                                type='text'
-                                placeholder='Ask for more details here...'
-                                value={prompt}
-                                onChange={(e) => setPrompt(e.target.value)}
-                            />
-                            <button onClick={handleAskMore} className='bold-text'>Ask More</button>
-                        </div>
-                    )}
                 </div>
             </div>
         </div>

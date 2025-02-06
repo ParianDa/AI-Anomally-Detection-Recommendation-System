@@ -1,0 +1,11 @@
+scikit-learn
+tensorflow
+prettytable
+openai=0.28
+python-dotenv
+pandas~=2.2.3
+numpy~=2.0.2
+tensorflow
+matplotlib
+matplotlib.pylot
+keras
